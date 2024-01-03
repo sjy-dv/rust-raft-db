@@ -2,11 +2,11 @@
 
 use serde_derive::Deserialize;
 use std::collections::HashMap;
-use rrdb::error::{Error, Result};
-use rrdb::raft;
-use rrdb::sql;
-use rrdb::storage;
-use rrdb::Server;
+use rustraftdb::error::{Error, Result};
+use rustraftdb::raft;
+use rustraftdb::sql;
+use rustraftdb::storage;
+use rustraftdb::Server;
 
 #[tokio::main]
 async fn main() -> Result<()> {

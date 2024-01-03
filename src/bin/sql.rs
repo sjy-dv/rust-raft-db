@@ -4,10 +4,10 @@ use rustyline::history::DefaultHistory;
 use rustyline::validate::{ValidationContext, ValidationResult, Validator};
 use rustyline::{error::ReadlineError, Editor, Modifiers};
 use rustyline_derive::{Completer, Helper, Highlighter, Hinter};
-use rrdb::error::{Error, Result};
-use rrdb::sql::execution::ResultSet;
-use rrdb::sql::parser::{Lexer, Token};
-use rrdb::Client;
+use rustraftdb::error::{Error, Result};
+use rustraftdb::sql::execution::ResultSet;
+use rustraftdb::sql::parser::{Lexer, Token};
+use rustraftdb::Client;
 
 #[tokio::main]
 async fn main() -> Result<()> {
@@ -30,14 +30,14 @@ async fn main() -> Result<()> {
         ])
         .get_matches();
 
-    let mut toysql =
-        ToySQL::new(opts.get_one::<String>("host").unwrap(), *opts.get_one("port").unwrap())
+    let mut sjysql =
+        SjySQL::new(opts.get_one::<String>("host").unwrap(), *opts.get_one("port").unwrap())
             .await?;
 
     if let Some(command) = opts.get_one::<&str>("command") {
-        toysql.execute(command).await
+        sjysql.execute(command).await
     } else {
-        toysql.run().await
+        sjysql.run().await
     }
 }
 

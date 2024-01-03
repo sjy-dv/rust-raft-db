@@ -1,8 +1,8 @@
 #![warn(clippy::all)]
 
-use rrdb::error::{Error, Result};
-use rrdb::storage::debug;
-use rrdb::storage::engine::{BitCask, Engine};
+use rustraftdb::error::{Error, Result};
+use rustraftdb::storage::debug;
+use rustraftdb::storage::engine::{BitCask, Engine};
 
 fn main() -> Result<()> {
     let args = clap::command!()
